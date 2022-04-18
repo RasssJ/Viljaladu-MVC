@@ -1,0 +1,38 @@
+﻿@model ViljaladuMVC.Models.Koorma
+
+@{
+    ViewData["Title"] = "Lisa";
+}
+
+<h1>Lisa uus Koorma</h1>
+
+<h4>Koorma</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AutoNumber" class="control-label"></label>
+                <input asp-for="AutoNumber" class="form-control" />
+                <span asp-validation-for="AutoNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SisenemisMass" class="control-label"></label>
+                <input asp-for="SisenemisMass" class="form-control" />
+                <span asp-validation-for="SisenemisMass" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Lisa" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-controller="Home">Tagasi</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

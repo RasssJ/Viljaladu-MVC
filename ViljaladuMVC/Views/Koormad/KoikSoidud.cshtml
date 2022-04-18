@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ViljaladuMVC.Models.Koorma>
+
+@{
+    ViewData["Title"] = "KoikSoidud";
+}
+
+<h1>Koik Soidud</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AutoNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SisenemisMass)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LahkumisMass)
+            </th>
+            <th>
+                Maha Laetud (kg)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int kokku = 0;
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a href="/Koormad?autonr=@Html.DisplayFor(modelItem => item.AutoNumber)">@Html.DisplayFor(modelItem => item.AutoNumber)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SisenemisMass)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LahkumisMass)
+                </td>
+                <td>
+                    @(item.SisenemisMass - item.LahkumisMass)
+                    @{
+                        kokku += (item.SisenemisMass - item.LahkumisMass);
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+    <h1>Kokku toodud vili: @kokku kg</h1>
+</table>

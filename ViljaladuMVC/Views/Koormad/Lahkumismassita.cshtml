@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ViljaladuMVC.Models.Koorma>
+
+@{
+    ViewData["Title"] = "Lahkumismassita";
+}
+
+<h1>Lahkumismassita Koormad</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AutoNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SisenemisMass)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LahkumisMass)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AutoNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SisenemisMass)
+            </td>
+            <td>
+                <a asp-action="LisaLahkumismass" asp-route-id="@item.Id">Lisa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
